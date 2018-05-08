@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#055d72</color>
+    <color name="colorPrimaryDark">#0095ad</color>
+    <color name="colorAccent">#e29c00</color>
+    <color name="colorControlHighLight">#e25c00</color>
+    <color name="colorError">#f44242</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#212121</color>
+    <color name="pure_black">#000000</color>
+
+    <color name="hour">#888888</color>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_start_color">#ffffff</color>
+    <color name="list_row_end_color">#ffffff</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+
+
+    <color name="background_login_button">#0095AD</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="splash_background">#004A8D</color>
+
+    <color name="color_appbar">#004A8D</color>
+
+    <color name="blue_pressed">#002A8D</color>
+    <color name="blue_focused">#006A8D</color>
+
+    <color name="green_pressed">#2BBA1F</color>
+    <color name="green_focused">#5BBA1F</color>
+
+
+    <color name="yellow_pressed">#e3c000</color>
+    <color name="yellow_focused">#e27c00</color>
+
+
+</resources>

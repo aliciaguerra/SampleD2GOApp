@@ -1,0 +1,138 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+           url "https://maven.google.com"
+        }
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+
+    lintOptions{
+        abortOnError false
+    }
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+task clearJar(type: Delete) {
+    delete 'build/outputs/release/d2g.jar'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+    failOnError false
+}
+
+task generateJavaDocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavaDocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavaDocsJar
+    archives generateSourcesJar
+}
+
+/**
+ * Creates Jar from Release files
+ */
+task makeJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('libs/')
+    include('classes.jar')
+    rename ('classes.jar', 'digital2gosdk-1.0.0-javadoc.jar')
+}
+
+//makeJar.dependsOn(clearJar, build)
+
+tasks.whenTaskAdded {task ->
+    if(task.name.contains("compileDebugJavaWithJavac")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("compileReleaseJavaWithJavac")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("javadoc")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("install")) {
+        task.enabled = true
+    }
+
+    if(task.name.contains("extractReleaseAnnotations")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("extractDebugAnnotations")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("generateJavadocs")) {
+        task.enabled = false
+    }
+
+    if(task.name.contains("lint")) {
+        task.enabled = false
+    }
+}
+
+dependencies {
+    compile files("${System.properties['java.home']}/../lib/tools.jar")
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile'com.google.android.gms:play-services:10.0.1'
+    compile'com.google.android.gms:play-services-maps:10.0.1'
+    compile'com.google.maps.android:android-maps-utils:0.4+'
+    compile'com.google.android.gms:play-services-location:10.0.1'
+    compile'com.kontaktio:sdk:3.0.0'
+    compile'com.squareup.okhttp3:okhttp:3.0.1'
+    compile'com.squareup.retrofit:retrofit:1.9.0'
+    compile'com.google.code.gson:gson:2.8.1'
+    //Amazon
+    compile'com.amazonaws:aws-android-sdk-sns:2.2.11'
+}

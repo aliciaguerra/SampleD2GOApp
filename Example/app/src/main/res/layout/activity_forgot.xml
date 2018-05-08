@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#004A8D">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_password_title"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:textColor="#F2F2F2"
+        android:textSize="30sp"/>
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="#2BBA3F"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="#DADEE9"
+        android:text="@string/recover_msg"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/etxt_shape"
+        android:layout_marginTop="15dp"
+        android:hint="@string/login_username"
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:singleLine="true"
+        android:textColor="#8698BE"
+        android:textColorHint="#8698BE" />
+
+    <Button
+        android:id="@+id/cont"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/log_in_shape"
+        android:layout_marginTop="10dp"
+        android:elevation="16dp"
+        android:text="@string/forgot_continue"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:onClick="recoverPass"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/d2go_arrow"
+        android:onClick="back" />
+
+</LinearLayout>

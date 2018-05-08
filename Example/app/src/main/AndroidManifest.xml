@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.digital2go.demo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_d2go"
+        android:label="@string/app_title"
+        android:supportsRtl="true"
+        android:theme="@style/FullScreenActivity">
+        <meta-data
+            android:name="app_name"
+            android:value="@string/app_name" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="kontakt.io.API_KEY"
+            android:value="@string/kontakt_io_api_key" />
+        <meta-data
+            android:name="d2go_app_username"
+            android:value="@string/d2go_app_name" />
+        <meta-data
+            android:name="d2go_app_password"
+            android:value="@string/d2go_app_pass" />
+        <meta-data
+            android:name="aws_key"
+            android:value="@string/aws_key" />
+        <meta-data
+            android:name="aws_secret"
+            android:value="@string/aws_secret" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".GoogleActivity" />
+
+        <receiver
+            android:name=".CampaignReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.d2go.sdk.beaconimpression.d2godemo" />
+                <action android:name="com.d2go.sdk.geofenceimpression.d2godemo" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".ConsoleReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.d2go.interaction.d2godemo" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".BluetoothReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".GPSReceiver">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".notifications.FirebaseMessageService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".notifications.FirebaseIDService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".SplashScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivityNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgotActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="1676acebc0e04f8b557438ee0e097a3bd802c961" />
+
+        <activity android:name=".ConfirmActivity"></activity>
+    </application>
+
+</manifest>

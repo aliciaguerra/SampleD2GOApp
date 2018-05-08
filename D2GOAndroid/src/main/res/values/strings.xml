@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">D2GOSDK</string>
+
+    <!--Api Key-->
+    <string name="kontakt_io_api_key"></string>
+    <string name="aws_key"></string>
+    <string name="aws_secret"></string>
+    <string name="d2go_app_name"></string>
+    <string name="d2go_app_pass"></string>
+    <string name="d2go_api_endpoint">https://api.digital2go.com</string>
+</resources>
